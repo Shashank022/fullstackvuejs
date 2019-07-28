@@ -1,11 +1,11 @@
-import express from 'express';
-import { json } from 'body-parser';
-import cors from 'cors';
+const express = require('express');
+const bodyParser = require('bodyParser');
+const cors = require('cors');
 
 
 const app = express();
 
-app.arguments(json);
+app.use(bodyParser.json());
 app.use(cors());
 
 const port = process.env.PORT || 5000;
