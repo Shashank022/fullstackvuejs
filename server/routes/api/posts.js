@@ -26,6 +26,14 @@ router.post('/', async(req,res)=>{
 
 // Delete Posts
 
+router.delete('/:d', async(req,res)=>{
+    const posts = await loadPoostCollection();
+    await posts.deleteOne({_id: new mongodb.ObjectID(req.params.id) });
+res.status(200).send();
+});
+
+
+
 async function loadPoostCollection(){
     const client = await mongodb.MongoClient.connect
     ('mongodb://user:group12@ds255917.mlab.com:55917/vue_express',{
